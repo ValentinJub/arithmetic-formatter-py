@@ -14,7 +14,7 @@ def arithmetic_arranger(problems, solve = False):
       t = int(itemSplit[0])
       t = int(itemSplit[2])
     except:
-      return "Error: Number must only contain digits."
+      return "Error: Numbers must only contain digits."
     if not re.search(r'[+-]', sign):
       return "Error: Operator must be '+' or '-'."
     if len(top) > 4 or len(down) > 4:
@@ -30,6 +30,7 @@ def arithmetic_arranger(problems, solve = False):
   bot = []
   opres = []
   res = []
+  c = len(object)
   for op in object:
     bigSpace = "    "  
     maxN = max([len(op["top"]), len(op["down"])])
@@ -41,6 +42,8 @@ def arithmetic_arranger(problems, solve = False):
     #top string is made of = (space * (maxL + 1 - topN.len)) + topN + space * 4 etc...
     #bottom string is made of = sign + space * (maxL - (sign + bottomN.len)) + bottomN etc...
     #bb string is made of = - * maxL + 4 spaces etc...
+    if c == 1:
+      bigSpace = ""
     top.append(topSpace + op["top"] + bigSpace)
     mid.append(op["sign"] + botSpace + op["down"] + bigSpace)
     bot.append("-" * maxL + bigSpace)
@@ -52,6 +55,7 @@ def arithmetic_arranger(problems, solve = False):
         r = int(op["top"]) - int(op["down"])
       solveSpace = " " * (maxL - len(str(r)))
       opres.append(solveSpace + str(r) + bigSpace)
+    c -= 1
 
   res = "".join(top) + "\n" +  "".join(mid) + "\n" + "".join(bot)
   if solve:
