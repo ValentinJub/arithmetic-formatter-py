@@ -1,9 +1,6 @@
 #!/usr/bin/python3
 
-import sys
 import re
-# retrieve command-line arguments
-args = sys.argv[1:]
 
 def arithmetic_arranger(problems, solve = False):
   if len(problems) > 5:
